@@ -357,3 +357,7 @@ For issues or enhancements:
 1. Check `references/TROUBLESHOOTING.md`
 2. Review examples in `examples/`
 3. Follow the 8-phase process step-by-step
+
+## Note
+
+The swarm orchestrator skill has been renamed to zo-swarm-orchestrator; repo: https://github.com/marlandoj/zo-swarm-orchestrator.
