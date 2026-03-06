@@ -1,4 +1,4 @@
-# Persona Creation Template - Quick Start
+# Zo Persona Creator - Quick Start
 
 Create a new AI persona in 5 minutes.
 

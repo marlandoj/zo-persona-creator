@@ -1,6 +1,6 @@
 # Healthcare Advisor Example
 
-A complete example of a Healthcare Advisor persona built with the Persona Creation Template.
+A complete example of a Healthcare Advisor persona built with the Zo Persona Creator skill.
 
 ## Overview
 

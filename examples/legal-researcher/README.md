@@ -1,6 +1,6 @@
 # Legal Researcher Example
 
-A complete example of a Legal Researcher persona built with the Persona Creation Template.
+A complete example of a Legal Researcher persona built with the Zo Persona Creator skill.
 
 ## Overview
 

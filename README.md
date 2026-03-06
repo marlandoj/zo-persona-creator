@@ -11,10 +11,58 @@
 This skill provides everything you need to create production-ready AI personas on Zo Computer:
 
 - **8-Phase Creation Process** — From planning through deployment
-- **Pre-built Templates** — Persona prompts, safety rules, skill scripts, MCP wrappers
+- **Pre-built Templates** — Persona prompts, safety rules, SOUL/IDENTITY/USER/HEARTBEAT files, skill scripts, MCP wrappers
 - **Automated Setup Scripts** — Generate a complete persona in 2 minutes
 - **52 Reference Agents** — Built on the [Agency Agents](https://github.com/msitarzewski/agency-agents) framework for proven personality patterns
 - **Domain Adaptation Guides** — Customize for financial, healthcare, legal, creative, and more
+- **Cross-Platform Compatible** — Works on Zo Computer, Claude Code, OpenClaw, and any markdown-aware agent platform
+
+---
+
+## Installation
+
+### Via Zo Chat (natural language)
+
+Open your Zo chat window and type:
+
+```
+Clone the zo-persona-creator skill from GitHub into my Skills folder.
+Repo: https://github.com/marlandoj/zo-persona-creator
+```
+
+Zo will clone the repo and place it at `Skills/zo-persona-creator/`.
+
+To also install the Agency Agents reference library:
+
+```
+Also clone the agency-agents repo from https://github.com/msitarzewski/agency-agents
+into my workspace so I can use them as reference personas.
+```
+
+### Via Terminal
+
+```bash
+# Clone the skill into your Skills directory
+cd /home/workspace/Skills
+git clone https://github.com/marlandoj/zo-persona-creator.git
+
+# (Optional) Clone the Agency Agents reference library
+cd /home/workspace
+git clone https://github.com/msitarzewski/agency-agents.git
+```
+
+### Verify Installation
+
+```bash
+ls Skills/zo-persona-creator/
+# Should show: SKILL.md  QUICKSTART.md  README.md  assets/  examples/  references/  scripts/
+```
+
+Or via Zo chat:
+
+```
+Show me the contents of Skills/zo-persona-creator/
+```
 
 ---
 
@@ -28,7 +76,7 @@ The fastest way. Open your Zo chat window and type:
 
 ```
 Create a new persona called "Health Coach" for the healthcare domain.
-Use the persona creation template skill.
+Use the zo-persona-creator skill.
 ```
 
 Zo will read the skill instructions, run the setup scripts, and walk you through customization — all conversationally. You can also say things like:
@@ -71,11 +119,18 @@ This skill integrates with [**The Agency**](https://github.com/msitarzewski/agen
 
 ### Installing Agency Agents
 
-```bash
-# Clone into your workspace
-git clone https://github.com/msitarzewski/agency-agents.git
+**Via Zo chat:**
 
-# Browse available agents
+```
+Clone the agency-agents repo from https://github.com/msitarzewski/agency-agents
+into my workspace. Then show me the available agent categories.
+```
+
+**Via terminal:**
+
+```bash
+cd /home/workspace
+git clone https://github.com/msitarzewski/agency-agents.git
 ls agency-agents/
 ```
 
@@ -93,7 +148,7 @@ ls agency-agents/
 | **Spatial Computing** (6) | XR Architect, macOS Metal, XR Immersive, XR Cockpit, visionOS, Terminal Integration | AR/VR/XR development |
 | **Specialized** (3) | Agents Orchestrator, Data Analytics Reporter, LSP/Index Engineer | Multi-agent coordination, code intelligence |
 
-### How to Use Agency Agents with This Template
+### How to Use Agency Agents with This Skill
 
 **Method 1: Natural language in Zo chat**
 
@@ -210,7 +265,7 @@ See [`examples/devops-engineer/`](examples/devops-engineer/) for a complete work
 ### Example 1: Financial Advisor (from Zo chat)
 
 ```
-Create a Financial Advisor persona using the persona creation template.
+Create a Financial Advisor persona using the zo-persona-creator skill.
 It should have access to Alpha Vantage and Alpaca MCP servers.
 Add safety rules requiring trade confirmation and position size limits.
 ```
@@ -239,12 +294,44 @@ bun setup-persona.ts "Brand Guardian" design
 bun validate-persona.ts brand-guardian-skill
 ```
 
-### Example 3: Multi-agent team composition
+### Example 3: Multi-agent team composition (from Zo chat)
 
 ```
 I need a QA team for my web project. Create personas based on these
 agency-agents: Evidence Collector, Reality Checker, and Performance
 Benchmarker. Each should have appropriate safety rules and skills.
+Use the zo-persona-creator skill.
+```
+
+### Example 4: Full persona package with SOUL/IDENTITY/USER/HEARTBEAT (from Zo chat)
+
+```
+Set up a complete DevOps Engineer persona using the zo-persona-creator skill.
+Include SOUL.md, IDENTITY file, USER.md, and a HEARTBEAT with hourly
+health checks and a daily ops summary. Use the devops-engineer example
+as a reference.
+```
+
+### Example 4 via terminal:
+
+```bash
+# 1. Copy the templates
+cp Skills/zo-persona-creator/assets/soul-md-template.md SOUL.md
+cp Skills/zo-persona-creator/assets/user-md-template.md USER.md
+mkdir -p IDENTITY
+cp Skills/zo-persona-creator/assets/identity-md-template.md IDENTITY/devops-engineer.md
+
+# 2. Customize each file (replace placeholders)
+# Edit SOUL.md — set your workspace principles
+# Edit USER.md — set your profile, preferences, projects
+# Edit IDENTITY/devops-engineer.md — set role, tone, responsibilities
+
+# 3. Generate the skill scaffold
+cd Skills/zo-persona-creator/scripts
+bun setup-persona.ts "DevOps Engineer" infrastructure
+
+# 4. Create heartbeat agents via Zo chat:
+# "Create a Zo Agent that checks service health every 30 minutes. SMS me on failures."
 ```
 
 ---
