@@ -156,14 +156,52 @@ zo-persona-creator/
 │   ├── persona-prompt-template.md        # Customizable persona prompt
 │   ├── safety-rules-template.md          # Domain safety rules
 │   ├── skill-template.ts                # Bun/TypeScript skill scaffold
-│   └── mcp-wrapper-template.sh          # MCP server wrapper
+│   ├── mcp-wrapper-template.sh          # MCP server wrapper
+│   ├── soul-md-template.md              # SOUL.md constitution (OpenClaw-compatible)
+│   ├── identity-md-template.md          # IDENTITY.md presentation layer
+│   ├── user-md-template.md              # USER.md human profile
+│   └── heartbeat-md-template.md         # HEARTBEAT.md scheduled tasks
 ├── references/
 │   ├── MANUAL-SETUP-GUIDE.md            # Step-by-step manual process
 │   └── TROUBLESHOOTING.md              # Common issues and fixes
 └── examples/
     ├── healthcare-advisor/              # Healthcare domain example
-    └── legal-researcher/                # Legal domain example
+    ├── legal-researcher/                # Legal domain example
+    └── devops-engineer/                 # Complete persona package example
 ```
+
+---
+
+## SOUL / IDENTITY / USER / HEARTBEAT Architecture
+
+For a more structured approach — popular with OpenClaw and Claude Code users — this skill includes templates for the layered identity file pattern:
+
+```
+SOUL.md (constitution — principles, boundaries, safety)
+    ↓ inherited by
+IDENTITY/[persona].md (presentation — tone, responsibilities, tools)
+    ↓ personalized by
+USER.md (human context — preferences, projects, risk tolerance)
+    ↓ automated by
+HEARTBEAT.md (scheduled tasks — health checks, alerts, reports)
+```
+
+| File | Scope | Purpose | Template |
+|------|-------|---------|----------|
+| **SOUL.md** | Global (all personas) | Non-negotiable principles and safety boundaries | `assets/soul-md-template.md` |
+| **IDENTITY.md** | Per-persona | Tone, style, responsibilities, domain expertise, tool preferences | `assets/identity-md-template.md` |
+| **USER.md** | Global (all personas) | Communication preferences, active projects, risk tolerance | `assets/user-md-template.md` |
+| **HEARTBEAT.md** | Per-persona (optional) | Scheduled health checks, data refreshes, reports, alerts | `assets/heartbeat-md-template.md` |
+
+**Why use this pattern?**
+- **Version-controlled** — Persona changes are tracked in git, not buried in UI settings
+- **Portable** — Works on Zo Computer, Claude Code, OpenClaw, and any platform that reads markdown context files
+- **Auditable** — Clear separation of concerns makes persona behavior reviewable
+- **Composable** — SOUL.md shared by all personas reduces duplication
+
+**Zo-specific:** On Zo Computer, HEARTBEAT.md tasks map directly to Zo Agents with rrule scheduling and email/SMS delivery. See the template for exact rrule syntax.
+
+See [`examples/devops-engineer/`](examples/devops-engineer/) for a complete working example with all four files.
 
 ---
 

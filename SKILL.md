@@ -118,6 +118,7 @@ cd Skills/<your-persona>-skill
 ### Actions:
 1. Edit the persona prompt
 2. Edit the safety rules
+3. (Optional) Set up SOUL + IDENTITY + USER + HEARTBEAT architecture
 
 ### Customization:
 ```bash
@@ -127,6 +128,33 @@ nano assets/persona-prompt-template.md
 # Edit safety rules
 nano assets/safety-rules-template.md
 ```
+
+### Optional: SOUL / IDENTITY / USER / HEARTBEAT Architecture
+
+For a more structured persona setup — popular with OpenClaw and Claude Code users — use the layered identity file pattern:
+
+| File | Scope | Purpose |
+|------|-------|---------|
+| **SOUL.md** | Global (all personas) | Constitution — non-negotiable principles, boundaries, safety rules |
+| **IDENTITY.md** | Per-persona | Presentation layer — tone, style, responsibilities, boundaries, tools |
+| **USER.md** | Global (all personas) | Human profile — communication preferences, projects, risk tolerance |
+| **HEARTBEAT.md** | Per-persona (optional) | Scheduled tasks — health checks, alerts, reports |
+
+**Inheritance chain:** SOUL (principles) → IDENTITY (behavior) → USER (personalization) → HEARTBEAT (automation)
+
+Templates are in `assets/`:
+- `assets/soul-md-template.md` — Start here for your workspace constitution
+- `assets/identity-md-template.md` — One per persona, defines how it presents itself
+- `assets/user-md-template.md` — One per workspace, defines the human's preferences
+- `assets/heartbeat-md-template.md` — Optional, for scheduled monitoring via Zo Agents
+
+See `examples/devops-engineer/` for a complete working example.
+
+**Why use this pattern?**
+- **Version-controlled** — Persona changes tracked in git, not buried in UI settings
+- **Portable** — Works on Zo, Claude Code, OpenClaw, and any platform that reads markdown context
+- **Auditable** — Clear separation of concerns makes persona behavior reviewable
+- **Composable** — SOUL.md is shared by all personas, reducing duplication
 
 ## Phase 4: MCP Servers (AI Integration)
 
@@ -315,6 +343,10 @@ main();
 | `assets/safety-rules-template.md` | Safety rules template |
 | `assets/skill-template.ts` | Skill code template |
 | `assets/mcp-wrapper-template.sh` | MCP wrapper template |
+| `assets/soul-md-template.md` | SOUL.md constitution template (OpenClaw-compatible) |
+| `assets/identity-md-template.md` | IDENTITY.md presentation layer template |
+| `assets/user-md-template.md` | USER.md human profile template |
+| `assets/heartbeat-md-template.md` | HEARTBEAT.md scheduled tasks template |
 
 ### Guides
 | File | Purpose |
@@ -329,6 +361,7 @@ main();
 | `examples/financial-advisor/` | Financial domain example |
 | `examples/healthcare-advisor/` | Healthcare domain example |
 | `examples/legal-researcher/` | Legal domain example |
+| `examples/devops-engineer/` | Complete persona package (SOUL + IDENTITY + USER + HEARTBEAT) |
 
 ## Domain Adaptation Guide
 
